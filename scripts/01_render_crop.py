@@ -75,6 +75,11 @@ def column_x(rules, page_w):
             label_rule, total_rule, tot_mid = chain[0], chain[-1], rules[i + 1]
             right = rules[i + 2] + 3 if after < 130 else min(page_w - 4, tot_mid + 95)
             return (max(0.0, label_rule - 105), label_rule + 2), (total_rule - 2, right)
+    if len(rules) >= 3 and rules[-1] - rules[-2] < 60:
+        label_rule = rules[1] if len(rules) > 1 and rules[1] > 50 else rules[0]
+        total_rule = rules[-3] if len(rules) >= 4 else rules[-2]
+        right = min(page_w - 4, rules[-1] + 40)
+        return (max(0.0, label_rule - 120), label_rule + 2), (total_rule - 2, right)
     raise RuntimeError(f"column rules not recognised: {[round(r) for r in rules]}")
 
 
@@ -163,7 +168,7 @@ def write_templates(names, work):
 
 def main(provincia):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == provincia)
-    pdf = PROJECT / book["pdf"]
+    pdf = (ROOT / book["pdf"]).resolve() if (ROOT / book["pdf"]).exists() else (PROJECT / book["pdf"]).resolve()
     work = ROOT / "work" / provincia.lower()
     pages_dir, crops_dir = work / "pages", work / "crops"
     pages_dir.mkdir(parents=True, exist_ok=True)
