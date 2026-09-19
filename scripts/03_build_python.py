@@ -46,8 +46,10 @@ def build(prov):
     # Ensure cod_prov is 3-digit string (e.g. '001', '002')
     merged["cod_prov"] = merged["cod_prov"].astype(str).str.zfill(3)
 
-    # Export outputs
-    dta_path = ROOT / "output" / f"tav10_{p}.dta"
+    # Export outputs (save .dta directly inside output/dta/)
+    dta_dir = ROOT / "output" / "dta"
+    dta_dir.mkdir(parents=True, exist_ok=True)
+    dta_path = dta_dir / f"tav10_{p}.dta"
     xlsx_path = ROOT / "output" / f"tav10_{p}.xlsx"
 
     merged.to_stata(dta_path, write_index=False, version=118)
