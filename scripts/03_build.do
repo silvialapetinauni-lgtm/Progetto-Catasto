@@ -96,7 +96,8 @@ notes: Fonte: ISTAT, 1° Censimento generale dell'agricoltura 15 aprile 1961, Vo
 notes: az_* = numero di aziende; sup_* = superficie totale in ettari; "—" nella fonte = 0.
 notes: Digitalizzato con doppia lettura indipendente + controlli (somme per regione agraria e confronto con Tav. 1).
 compress
-save "$DIGIT/output/tav10_`p'.dta", replace
+capture mkdir "$DIGIT/output/dta"
+save "$DIGIT/output/dta/tav10_`p'.dta", replace
 export excel using "$DIGIT/output/tav10_`p'.xlsx", firstrow(varlabels) sheet("tav10_`p'", replace)
 
 describe, short
