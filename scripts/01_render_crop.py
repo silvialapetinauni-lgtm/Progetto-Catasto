@@ -106,7 +106,14 @@ def find_rule_chain(rules):
 
 
 def column_x(rules, page_w):
-    """Find the 9 evenly spaced rules label|CD … ALTRA||TOTALE, then the Totale aziende|superficie rule."""
+    """Find the rules for label|CD … ALTRA||TOTALE, then the Totale aziende|superficie rule."""
+    total_rule = next((r for r in reversed(rules) if 540 <= r <= 585), None)
+    if total_rule is not None:
+        label_rule = next((r for r in rules if 50 <= r <= 120), rules[0])
+        tot_mid = next((r for r in rules if 30 <= r - total_rule <= 70), total_rule + 45)
+        right_rule = next((r for r in rules if r > tot_mid + 35), page_w - 4)
+        return (max(0.0, label_rule - 105), label_rule + 2), (total_rule - 2, min(page_w - 4, right_rule + 5))
+
     chain = find_rule_chain(rules)
     if chain:
         label_rule, total_rule = chain[0], chain[-1]
