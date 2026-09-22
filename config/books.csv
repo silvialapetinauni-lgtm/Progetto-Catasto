@@ -2,3 +2,4 @@ provincia,sigla,cod_prov,fascicolo,pdf,tav10_first_page,tav10_last_page,tav1_pag
 Torino,TO,001,1,torino.pdf,43,51,14,17,2
 Vercelli,VC,002,2,vercelli.pdf,31,35,10,10,2
 Cuneo,CN,004,4,pdf_province/cuneo.pdf,44,52,13,17,2
+Asti,AT,005,5,pdf_province/asti.pdf,41,43,12,5,2
