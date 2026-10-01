@@ -23,6 +23,9 @@ ROOT = Path(__file__).resolve().parents[1]
 _spec = importlib.util.spec_from_file_location("rc", ROOT / "scripts" / "01_render_crop.py")
 rc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(rc)
+_spec = importlib.util.spec_from_file_location("ps", ROOT / "scripts" / "pagesource.py")
+ps = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ps)
 
 OCR_MAP = str.maketrans({"O": "0", "o": "0", "Ò": "0", "l": "1", "I": "1", "i": "1", "!": "1", "|": "1"})
 AZ_RE, SUP_RE = re.compile(r"\d{1,3}(\.\d{3})*"), re.compile(r"\d{1,3}(\.\d{3})*,\d{2}")
@@ -127,14 +130,13 @@ def title(words, b):
 
 def main(prov):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
-    pdf = (ROOT / book["pdf"]).resolve()
     work = ROOT / "work" / prov.lower()
     classes = list(csv.DictReader(open(ROOT / "config" / "classes.csv")))
     cache = {}
     for b in csv.DictReader(open(work / "blocks.csv")):
         page = int(b["pdf_page"])
         if page not in cache:
-            cache[page] = rc.words_on_page(pdf, page)[2]
+            cache[page] = ps.words(book, work, page)[2]
         words = cache[page]
         cells, pitch, n, shift = read_block(words, b)
         ra_num, zona = title(words, b) if b["block"].startswith("RA") else ("", "")

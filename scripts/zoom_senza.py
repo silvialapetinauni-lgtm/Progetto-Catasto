@@ -16,15 +16,17 @@ ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("rc", ROOT / "scripts" / "01_render_crop.py")
 rc = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(rc)
+_spec = importlib.util.spec_from_file_location("ps", ROOT / "scripts" / "pagesource.py")
+ps = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ps)
 
 
 def main(prov, block, codes):
     work = ROOT / "work" / prov.lower()
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
     b = next(r for r in csv.DictReader(open(work / "blocks.csv")) if r["block"] == block)
-    pdf = ROOT / book["pdf"]
-    pw, ph, _ = rc.words_on_page(pdf, int(b["pdf_page"]))
-    img = rc.render(pdf, int(b["pdf_page"]), work / "pages")
+    pw, ph, _ = ps.words(book, work, int(b["pdf_page"]))
+    img = ps.image(book, work, int(b["pdf_page"]))
     sx, sy = img.width / pw, img.height / ph
     s, t = float(b["senza_pt"]) + 3, float(b["totale_pt"]) + 3
     pitch = (t - s) / 35.1

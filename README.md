@@ -88,3 +88,6 @@ I seguenti script sorgente Python si trovano nella cartella `scripts/` e sono pr
 - **`python3 scripts/fill_pass2.py Alessandria RA01 1 M < lettura.txt`**: scrive il Pass 2 da una lettura visiva indipendente della strip.
 - **`python3 scripts/zoom_senza.py Alessandria RA08 12 13`**: zoom di una riga (colonne TOTALE) più la riga intera con le 4 forme di conduzione, per risolvere le celle e, dove il margine della scansione è tagliato, ricostruire il TOTALE come somma di riga.
 - `work/<prov>/resolutions.csv` accetta anche `var = ra_num / zona` (class_code vuoto) per i titoli dei blocchi.
+- **`python3 scripts/check_pass.py Alessandria --write`**: controlla le somme del Pass 2 e decide le celle in disaccordo il cui valore chiude sia la somma del blocco sia quella della Tav. 1 (motivo scritto in `resolutions.csv`); elenca le celle da rileggere sullo zoom.
+- `scripts/pagesource.py`: se il PDF non è nel repo (Torino) usa le pagine già renderizzate in `work/<prov>/pages/` con OCR Tesseract (`apt-get install tesseract-ocr`).
+- Procedura completa e risultati dell'audit di ottobre 2026: `docs/audit_2026-10.md`.

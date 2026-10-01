@@ -4,8 +4,8 @@
 Each block runs from its first row ("Senza terreno agrario", fuzzy-matched; "agrario" alone is accepted
 when "Senza" is lost by the OCR) to the first "TOTALE" row 250-360 pt below it. The block crop starts
 18 pt above "Senza" so that the "REGIONE AGRARIA n (Z)" title is included.
-When a TOTALE row has no "Senza"/"agrario" anchor above it (p. 45, p. 47), the block is placed
-SPAN_FALLBACK pt above TOTALE.
+When a TOTALE row has no "Senza"/"agrario" anchor above it (Alessandria pp. 45, 47) the first row is placed
+SPAN_FALLBACK pt above TOTALE, and vice versa when "TOTALE" is lost (Cuneo pp. 46, 50, 52).
 Columns come from the column headers: the two Totale columns are under the right-most "Aziende" and
 "Superficie" headers (a header lost by the OCR is inferred from its neighbour), the class-label column ends
 before the first "Aziende"/"Superficie" pair; a vertical rule detected within 8 pt refines each edge.
@@ -19,12 +19,17 @@ import csv
 import importlib.util
 import re
 import sys
+
+import numpy as np
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 _spec = importlib.util.spec_from_file_location("rc", ROOT / "scripts" / "01_render_crop.py")
 rc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(rc)
+_spec = importlib.util.spec_from_file_location("ps", ROOT / "scripts" / "pagesource.py")
+ps = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ps)
 
 SENZA_RE = re.compile(r"^\W*.?.?[ae]nz[aQ0-9.]*\W*$|^sen", re.I)      # Senza, lenza, t-jenza, SenzQ.
 TOTALE_RE = re.compile(r"OTAL|TOTA[LI]", re.I)                         # TOTALE., 'fOTALE, TOTALlè, 1'OTALE,
@@ -34,7 +39,7 @@ SPAN_FALLBACK = 300      # typical "Senza" -> "TOTALE" distance (Alessandria: 29
 
 
 def anchors(words):
-    left = [w for w in words if w[0] < 130]
+    left = [w for w in words if w[0] < 230]           # labels sit at x 0-190 pt depending on the scan
     senza = [w for w in left if SENZA_RE.search(w[4])]
     agrario = [w for w in left if re.fullmatch(r"\W*agrario\W*", w[4], re.I)]
     rows = sorted({round(w[1], 1) for w in senza + agrario})
@@ -53,8 +58,11 @@ def locate(img, words, page_w, page_h):
     blocks = []
     for s in starts:
         t = next((t for t in totals if BLOCK_SPAN[0] < t[1] - s < BLOCK_SPAN[1]), None)
-        if t is None:
-            continue
+        if t is None:                               # "TOTALE" lost by the OCR (Cuneo pp. 46, 50, 52)
+            if s + SPAN_FALLBACK + 10 > page_h or any(abs(s + SPAN_FALLBACK - u[1]) < 40 for u in totals):
+                continue
+            print(f"    no 'TOTALE' anchor for Senza at y {s:.0f}: TOTALE assumed at y {s + SPAN_FALLBACK:.0f}")
+            t = (0, s + SPAN_FALLBACK, 0, s + SPAN_FALLBACK + 7, "TOTALE?")
         if blocks and s < blocks[-1][3]:            # inside the previous block (e.g. a stray "agrario")
             continue
         blocks.append((s - TITLE_GAP, t[3] + 14, s, t[1]))
@@ -80,6 +88,17 @@ def locate(img, words, page_w, page_h):
     first_az = min(heads, key=lambda w: w[0])
     if az_head[0] > sup_head[0]:                    # Totale "Superficie" header lost by the OCR (p. 12)
         sup_head = (az_head[0] + 51, az_head[1], az_head[0] + 80, az_head[3], "Superficie?")
+    label_x1 = min(first_az[0], min(w[0] for w in supers) - 46) - 3   # first "Aziende" may be lost (p. 48)
+    # 5 Aziende/Superficie pairs at a constant pitch: when the Totale headers are lost by the OCR (Cuneo p. 50,
+    # where the text layer misses the Totale columns altogether) extrapolate the 5th pair from the label column edge
+    heads_x = sorted({round(w[0]) for w in heads})
+    steps = [b - a for a, b in zip(heads_x, heads_x[1:]) if 85 < b - a < 115]
+    if steps:
+        pitch = float(np.median(steps))
+        exp_sup = label_x1 + 3 + 4 * pitch + 46        # conduzione diretta starts at the label column edge
+        if sup_head[0] < exp_sup - 30:
+            sup_head = (exp_sup, sup_head[1], exp_sup + 29, sup_head[3], "Superficie?")
+            az_head = (exp_sup - 46, sup_head[1], exp_sup - 23, sup_head[3], "Aziende?")
     if sup_head[0] - az_head[2] > 45:               # Totale "Aziende" header lost by the OCR (p. 47)
         az_head = (sup_head[0] - 54, sup_head[1], sup_head[0] - 31, sup_head[3], "Aziende?")
     head_y = min(w[1] for w in heads + supers)
@@ -88,7 +107,6 @@ def locate(img, words, page_w, page_h):
     # columns from the headers; a vertical rule, when detected close to the expected place, refines them
     rules = rc.vertical_rules(img, sx, sy, blocks[0][2] + 10, blocks[0][3] - 5)
     near = lambda x, d: min((r for r in rules if abs(r - x) <= d), key=lambda r: abs(r - x), default=x)
-    label_x1 = min(first_az[0], min(w[0] for w in supers) - 46) - 3   # first "Aziende" may be lost (p. 48)
     az_x0 = near(az_head[0] - 22, 8)
     mid = near((az_head[2] + sup_head[0]) / 2, 8)
     sup_x1 = min(page_w - 1, max(near(sup_head[2] + 8, 8), sup_head[2] + 13))   # digits overhang the header
@@ -122,7 +140,6 @@ def make_crops(img, page_w, page_h, words, names, crops_dir):
 
 def main(provincia):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == provincia)
-    pdf = (ROOT / book["pdf"]).resolve()
     work = ROOT / "work" / provincia.lower()
     pages_dir, crops_dir = work / "pages", work / "crops"
     pages_dir.mkdir(parents=True, exist_ok=True)
@@ -130,8 +147,8 @@ def main(provincia):
 
     index, names = [], []
     for page in range(int(book["tav10_first_page"]), int(book["tav10_last_page"]) + 1):
-        pw, ph, words = rc.words_on_page(pdf, page)
-        img = rc.render(pdf, page, pages_dir)
+        pw, ph, words = ps.words(book, work, page)
+        img = ps.image(book, work, page)
         n = len(locate(img, words, pw, ph)[3])
         page_names = [f"RA{len(names) + i + 1:02d}" for i in range(n)]
         print(f"page {page}: {n} block(s)")
@@ -141,8 +158,8 @@ def main(provincia):
         raise RuntimeError(f"found {len(names)} RA blocks, books.csv says {book['n_ra']}")
 
     page = int(book["tav1_page"])
-    pw, ph, words = rc.words_on_page(pdf, page)
-    img = rc.render(pdf, page, pages_dir)
+    pw, ph, words = ps.words(book, work, page)
+    img = ps.image(book, work, page)
     print(f"page {page}: Tav. 1")
     index += [dict(r, pdf_page=page) for r in make_crops(img, pw, ph, words, ["TAV1"], crops_dir)]
 
