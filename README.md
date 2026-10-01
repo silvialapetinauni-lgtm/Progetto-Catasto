@@ -78,3 +78,16 @@ I seguenti script sorgente Python si trovano nella cartella `scripts/` e sono pr
   Genera un ritaglio ad alta definizione per una singola riga/cella di una regione agraria in `work/torino/zoom/` per il controllo visivo.
 - **`python3 scripts/01_render_crop.py Torino`**:
   Richiede il PDF provinciale (`torino.pdf`) per effettuare il rendering e il ritaglio iniziale dei blocchi ed estrarre le pagine.
+
+---
+
+## Libri dove `01_render_crop.py` fallisce (es. Alessandria)
+
+- **`python3 scripts/01b_locate_senza_totale.py Alessandria`**: localizza ogni blocco tra la riga "Senza terreno agrario" e la riga "TOTALE" (match fuzzy sull'OCR; fallback TOTALE − 300 pt se "Senza" manca), ricava le colonne TOTALE dalle intestazioni "Aziende"/"Superficie" e scrive crop, `blocks.csv` (con la geometria delle colonne) e template.
+- **`python3 scripts/01c_pass1_ocr.py Alessandria`**: Pass 1 dal testo OCR del PDF (`pdftotext -bbox`); celle illeggibili → `?`.
+- **`python3 scripts/fill_pass2.py Alessandria RA01 1 M < lettura.txt`**: scrive il Pass 2 da una lettura visiva indipendente della strip.
+- **`python3 scripts/zoom_senza.py Alessandria RA08 12 13`**: zoom di una riga (colonne TOTALE) più la riga intera con le 4 forme di conduzione, per risolvere le celle e, dove il margine della scansione è tagliato, ricostruire il TOTALE come somma di riga.
+- `work/<prov>/resolutions.csv` accetta anche `var = ra_num / zona` (class_code vuoto) per i titoli dei blocchi.
+- **`python3 scripts/check_pass.py Alessandria --write`**: controlla le somme del Pass 2 e decide le celle in disaccordo il cui valore chiude sia la somma del blocco sia quella della Tav. 1 (motivo scritto in `resolutions.csv`); elenca le celle da rileggere sullo zoom.
+- `scripts/pagesource.py`: se il PDF non è nel repo (Torino) usa le pagine già renderizzate in `work/<prov>/pages/` con OCR Tesseract (`apt-get install tesseract-ocr`).
+- Procedura completa e risultati dell'audit di ottobre 2026: `docs/audit_2026-10.md`.

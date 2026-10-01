@@ -76,7 +76,10 @@ def validate(prov):
     resolutions = {}
     if (work / "resolutions.csv").exists():
         for r in csv.DictReader(open(work / "resolutions.csv")):
-            resolutions[(r["block"], int(r["class_code"]), r["var"])] = (r["value_raw"], r["note"])
+            if r["var"] in ("ra_num", "zona"):             # block metadata, class_code left blank
+                resolutions[(r["block"], r["var"])] = (r["value_raw"], r["note"])
+            else:
+                resolutions[(r["block"], int(r["class_code"]), r["var"])] = (r["value_raw"], r["note"])
 
     blocks = sorted(p1)
     flags, rows = [], []
@@ -88,7 +91,9 @@ def validate(prov):
 
     for b in blocks:
         for key in ("ra_num", "zona"):
-            if b in p2 and p1[b][key] != p2[b][key]:
+            if (b, key) in resolutions:
+                p1[b][key] = resolutions[(b, key)][0]
+            elif b in p2 and p1[b][key] != p2[b][key]:
                 flag("pass disagreement", b, None, key, f"pass1 '{p1[b][key]}' vs pass2 '{p2[b][key]}'")
         for cc in classes.index:
             rec = dict(block=b, class_code=cc)
@@ -164,7 +169,7 @@ def validate(prov):
     long.insert(0, "provincia", prov)
     long.insert(1, "sigla", book["sigla"])
     long.insert(2, "cod_prov", book["cod_prov"])
-    long.insert(3, "reg_agr", long.block.map(lambda b: int(meta[b]["ra_num"] or b[2:])))
+    long.insert(3, "reg_agr", long.block.map(lambda b: int(meta[b]["ra_num"]) if meta[b]["ra_num"].isdigit() else int(b[2:])))
     long.insert(4, "id", book["sigla"] + long.reg_agr.astype(str))
     long.insert(5, "zona", long.block.map(lambda b: meta[b]["zona"]))
     long.insert(7, "class_label", long.class_code.map(classes["label"]))
