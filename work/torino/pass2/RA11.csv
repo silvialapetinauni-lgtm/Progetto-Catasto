@@ -1,6 +1,6 @@
 class_code,label,az_totale,sup_totale
-ra_num,numero regione agraria,11,
-zona,M / C / P,C,
+ra_num,numero regione agraria,11,11
+zona,M / C / P,C,C
 1,Senza terreno agrario,2,—
 2,"fino a 0,10",29,"2,49"
 3,"0,11 - 0,20",113,"19,10"
