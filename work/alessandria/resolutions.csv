@@ -1,0 +1,153 @@
+block,class_code,var,value_raw,note
+RA04,,ra_num,4,strip/title re-read: REGIONE AGRARIA 4 (C); OCR read 1
+RA07,,ra_num,7,title re-read: REGIONE AGRARIA 7 (C); OCR title unreadable
+RA07,,zona,C,title re-read: REGIONE AGRARIA 7 (C); OCR title unreadable
+RA09,,ra_num,9,title re-read: REGIONE AGRARIA 9 (P); OCR title unreadable
+RA09,,zona,P,title re-read: REGIONE AGRARIA 9 (P); OCR title unreadable
+RA01,4,az,5,zoom re-read; OCR missed the single digit
+RA01,12,sup,"224,50","zoom re-read: middle glyph broken; row = CD 78 / 224,50 only, other forms dashes"
+RA01,14,sup,"383,29",zoom re-read
+RA01,28,az,5,zoom re-read; OCR missed the single digit
+RA01,31,az,3,zoom re-read; OCR missed the single digit
+RA01,32,az,1,zoom re-read; OCR missed the single digit
+RA02,27,az,1,zoom re-read; OCR missed the single digit
+RA02,32,az,1,zoom re-read; OCR missed the single digit
+RA02,33,az,1,zoom re-read; OCR missed the single digit
+RA03,14,sup,"1.693,57",zoom re-read
+RA03,28,az,3,zoom re-read; OCR missed the single digit
+RA03,31,az,1,zoom re-read; OCR missed the single digit
+RA03,35,sup,"27.115,40",zoom re-read (5 slightly broken)
+RA04,4,sup,"48,09",zoom re-read
+RA04,5,sup,"86,28",zoom re-read
+RA04,8,sup,"352,96",zoom re-read
+RA04,11,sup,"805,90",zoom re-read
+RA04,29,az,1,zoom re-read; OCR missed the single digit
+RA04,30,az,1,zoom re-read; OCR missed the single digit
+RA04,30,sup,"221,69",zoom re-read; OCR missed the single digit
+RA04,31,az,1,zoom re-read; OCR missed the single digit
+RA05,3,az,122,zoom re-read
+RA05,9,sup,"372,38",zoom re-read
+RA05,13,sup,"727,14",zoom re-read
+RA05,26,az,5,zoom re-read; OCR missed the single digit
+RA05,35,sup,"22.751,54",zoom re-read
+RA06,4,sup,"69,17",zoom re-read
+RA06,29,sup,"377,00",zoom re-read; OCR missed the single digit
+RA06,30,az,1,zoom re-read; OCR missed the single digit
+RA07,3,az,308,zoom re-read
+RA07,8,az,628,zoom re-read
+RA07,9,sup,"1.075,44",zoom re-read
+RA07,12,az,454,zoom re-read
+RA07,13,sup,"1.043,91",zoom re-read
+RA07,14,sup,"1.255,15",zoom re-read
+RA07,28,az,3,zoom re-read; OCR missed the single digit
+RA08,11,sup,"646,12","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,12,sup,"978,00","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,13,sup,"793,24","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,14,sup,"1.121,33","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,15,sup,"948,67","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,16,sup,"1.215,79","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,17,sup,"5.163,14","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,18,sup,"4.557,15","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,19,sup,"3.701,14","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,20,sup,"2.900,24","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,21,sup,"4.921,89","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,22,sup,"2.180,28","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,23,sup,"1.464,33","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,24,sup,"1.595,58","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,25,sup,"575,55","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,26,sup,"755,95","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,27,az,3,"right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,27,sup,"251,14","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,28,az,1,"right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,28,sup,"147,10","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,31,az,1,"right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,31,sup,"356,68","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,32,az,1,"right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,32,sup,"596,74","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA08,35,sup,"36.203,82","right margin cut in the scan (p. 46); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA09,17,sup,"1.694,14",zoom re-read
+RA09,31,az,3,zoom re-read; OCR missed the single digit
+RA10,1,az,1,zoom re-read; OCR missed the single digit
+RA10,11,az,197,zoom re-read
+RA10,13,sup,"555,77",zoom re-read
+RA10,14,sup,"512,03",zoom re-read
+RA10,15,sup,"387,59",zoom re-read
+RA10,17,sup,"2.316,45",zoom re-read
+RA10,18,sup,"1.809,50",zoom re-read
+RA10,23,sup,"1.010,58",zoom re-read
+RA10,26,sup,"1.435,48",zoom re-read
+RA10,27,sup,"698,22",zoom re-read
+RA10,28,az,5,zoom re-read; OCR missed the single digit
+RA10,29,az,2,zoom re-read; OCR missed the single digit
+RA10,30,az,1,zoom re-read; OCR missed the single digit
+RA10,31,az,1,zoom re-read; OCR missed the single digit
+RA11,1,az,1,full-row re-read; OCR missed the single digit
+RA11,3,sup,"27,89","full-row re-read; = 27,38 + 0,51"
+RA11,4,az,108,"full-row re-read; = 26,91 + 1,38"
+RA11,8,sup,"219,52","full-row re-read; = 207,58 + 1,94 + 1,00 + 9,00"
+RA11,12,sup,"609,53","full-row re-read; = 590,52 + 7,95 + 11,06"
+RA11,18,az,280,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,19,sup,"1.565,02","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,20,az,98,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,20,sup,"1.348,17","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,21,sup,"1.990,48","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,23,sup,"1.098,60","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,24,sup,"1.558,09","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,25,sup,"856,70","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,26,sup,"849,70","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,27,sup,"519,79","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,28,sup,"467,85","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,29,sup,"697,13","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,31,sup,"702,21","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA11,35,sup,"23.252,99","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,2,sup,"2,32","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,3,sup,"28,61","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,4,sup,"52,90","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,5,az,280,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,5,sup,"100,27","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,6,sup,"94,53","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,7,az,470,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits; aziende 470 = 453 + 10 + 7"
+RA12,7,sup,"293,45","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits; aziende 470 = 453 + 10 + 7"
+RA12,8,sup,"399,98","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,9,sup,"788,29","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,10,sup,"866,20","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,11,sup,"818,73","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,12,sup,"983,88","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,13,sup,"784,14","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,14,sup,"943,30","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,15,sup,"781,84","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,16,sup,"637,37","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,17,sup,"3.676,62","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,18,sup,"3.154,79","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,19,sup,"2.287,41","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,20,sup,"2.065,63","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,21,sup,"3.234,40","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,22,az,85,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits; aziende 85 = 54 + 21 + 10"
+RA12,22,sup,"1.900,30","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits; aziende 85 = 54 + 21 + 10"
+RA12,23,sup,"1.873,83","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,24,sup,"2.652,78","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,25,sup,"2.193,49","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,26,sup,"3.141,64","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,27,sup,"2.155,62","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,28,sup,"2.343,19","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,29,sup,"1.642,00","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,30,az,5,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,30,sup,"1.120,89","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,31,az,1,"right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,31,sup,"284,00","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+RA12,32,sup,—,right margin cut in the scan (p. 48); dashes in every conduzione column of the row
+RA12,33,sup,—,right margin cut in the scan (p. 48); dashes in every conduzione column of the row
+RA12,34,sup,—,right margin cut in the scan (p. 48); dashes in every conduzione column of the row
+RA12,35,sup,"41.302,40","right margin cut in the scan (p. 48); superficie = sum of the 4 conduzione columns, matches visible digits"
+TAV1,8,sup,"3.296,80",zoom re-read
+TAV1,9,sup,"6.484,54",zoom re-read
+TAV1,10,sup,"7.991,35",zoom re-read
+TAV1,16,sup,"10.372,75",zoom re-read
+TAV1,19,sup,"22.988,15",zoom re-read
+TAV1,25,az,183,zoom re-read
+TAV1,26,sup,"12.566,71",zoom re-read
+TAV1,27,az,72,zoom re-read
+TAV1,30,az,12,zoom re-read
+TAV1,32,az,3,zoom re-read
+TAV1,33,az,1,zoom re-read
+TAV1,35,sup,"314.110,82",zoom re-read
