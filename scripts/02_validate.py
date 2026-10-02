@@ -243,7 +243,7 @@ def draw_audit(prov, long):
         f"Audit della digitalizzazione — Tav. 10, provincia di {prov} ({N_AUDIT} celle estratte a caso)",
         "",
         "1. Aprire il PDF della provincia alla 'pagina PDF' indicata (numero di pagina del file, non quello stampato).",
-        "2. Trovare il blocco 'REGIONE AGRARIA n' (colonna 'id': TO1 = regione agraria 1) e la riga della 'classe'.",
+        f"2. Trovare il blocco 'REGIONE AGRARIA n' (colonna 'id': {sample[0][0][:2]}1 = regione agraria 1) e la riga della 'classe'.",
         "3. Guardare solo le colonne TOTALE (Aziende o Superficie, come indicato).",
         "4. Confrontare con 'valore trascritto': scrivere si se identico, no se diverso.",
         "5. Se no, scrivere nella colonna successiva il valore come stampato (es. 1.451,79 oppure —).",
@@ -272,6 +272,8 @@ def upper_95(k, n):
 
 
 def score_audit(prov):
+    """Score a filled audit sheet. A targeted sheet (scripts/audit_targeted.py, column K "motivo") is
+    reported by stratum: it over-samples the cells the OCR got wrong, so no whole-table error bound is given."""
     from openpyxl import load_workbook
     path = ROOT / "output" / f"audit_{prov.lower()}.xlsx"
     ws = load_workbook(path).active
@@ -279,11 +281,21 @@ def score_audit(prov):
     done = [r for r in rows if str(r[7] or "").strip().lower() in ("si", "sì", "no")]
     errors = [r for r in done if str(r[7]).strip().lower() == "no"]
     n, k = len(done), len(errors)
+    targeted = len(rows[0]) > 10 and rows[0][10] is not None
     lines = [f"# Audit result — {prov}", "",
-             f"- cells checked: {n} of {len(rows)}",
-             f"- errors found: {k}",
-             f"- error rate: {k / n:.2%}" if n else "- error rate: n/a",
-             f"- 95% upper bound on the error rate: {upper_95(k, n):.2%}" if n else ""]
+             f"- sample: {'targeted (scripts/audit_targeted.py)' if targeted else 'random'}",
+             f"- cells checked by hand: {n} of {len(rows)}",
+             f"- errors found: {k}"]
+    if targeted:
+        lines += ["", "| motivo della selezione | celle controllate | errori |", "|---|---|---|"]
+        for m in dict.fromkeys(r[10] for r in rows):
+            sel = [r for r in done if r[10] == m]
+            lines.append(f"| {m} | {len(sel)} | {sum(str(r[7]).strip().lower() == 'no' for r in sel)} |")
+        lines += ["", "The sample over-represents the cells where the OCR failed, so its error rate is an upper "
+                      "estimate for the hardest cells, not a random-sample bound for the whole table."]
+    else:
+        lines += [f"- error rate: {k / n:.2%}" if n else "- error rate: n/a",
+                  f"- 95% upper bound on the error rate: {upper_95(k, n):.2%}" if n else ""]
     if errors:
         lines += ["", "| id | classe | colonna | trascritto | corretto | note |", "|---|---|---|---|---|---|"]
         lines += [f"| {r[1]} | {r[4]} | {r[5]} | {r[6]} | {r[8]} | {r[9] or ''} |" for r in errors]

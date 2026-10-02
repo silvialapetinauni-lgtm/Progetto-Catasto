@@ -21,7 +21,8 @@ Progetto per la digitalizzazione, la validazione e la strutturazione dei dati re
 │   ├── tav10_torino.dta
 │   ├── flags_torino.csv
 │   ├── validation_torino.md
-│   └── audit_torino.xlsx
+│   ├── audit_<prov>.xlsx      # audit manuale mirato (20–40 celle), compilato
+│   └── audit_result_<prov>.md # esito dell'audit manuale
 ├── scripts/                 # Script di elaborazione e validazione
 │   ├── 01_render_crop.py    # Rendering PDF e ritaglio blocchi/colonne
 │   ├── 02_validate.py       # Validazione, controllo aritmetico e generazione dati
@@ -70,10 +71,11 @@ I seguenti script sorgente Python si trovano nella cartella `scripts/` e sono pr
 
 - **`python3 scripts/02_validate.py Torino`**:
   Esegue il controllo di validazione completo per la provincia di Torino, esegue le verifiche aritmetiche e genera i dataset validati in `output/`.
-- **`python3 scripts/02_validate.py Torino --audit`**:
-  Genera il foglio Excel di audit casuale di 200 celle (`output/audit_torino.xlsx`) per la verifica umana.
+- **`python3 scripts/audit_targeted.py Torino`**:
+  Genera il foglio di audit manuale mirato (`output/audit_torino.xlsx`): 2 celle per blocco (20–40 in tutto), circa 3/4 scelte dove l'OCR ha avuto problemi (zoom/somma di riga, OCR diverso, OCR illeggibile) e 1/4 a caso tra le celle concordi, come controllo. La colonna "motivo" dice perché ogni cella è stata scelta.
 - **`python3 scripts/02_validate.py Torino --score`**:
-  Calcola il punteggio dell'audit umano completato.
+  Calcola l'esito dell'audit manuale compilato (`output/audit_result_torino.md`), diviso per motivo di selezione.
+- `python3 scripts/02_validate.py Torino --audit` genera ancora il vecchio foglio casuale di 200 celle; non è più usato.
 - **`python3 scripts/zoom.py Torino RA02 20`**:
   Genera un ritaglio ad alta definizione per una singola riga/cella di una regione agraria in `work/torino/zoom/` per il controllo visivo.
 - **`python3 scripts/01_render_crop.py Torino`**:

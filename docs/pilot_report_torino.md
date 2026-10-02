@@ -30,7 +30,7 @@ Date: 2026-09-15. Source: `torino.pdf` (ISTAT, 1° Censimento generale dell'agri
 | aziende = 0 ⇔ superficie = 0 | pass |
 | Stata asserts in `03_build.do` (row sums, province totals = Tav. 1: 92,453 aziende, 554,814.01 ha) | pass |
 | **error-detection test**: the same wrong digit planted in both passes, in 2 cells | both detected; both pinpointed to the exact cell |
-| **human audit** of 200 random cells (`audit_torino.xlsx`) | **pending**: to be filled in, then `02_validate.py Torino --score` |
+| **human audit** (`audit_torino.xlsx`) | **done 2026-10-02**: targeted sample of 34 cells (26 where the OCR had failed, 8 random controls), checked by hand on the PDF: **0 errors**. The earlier 200-cell sheet had been filled in by the Jules bot without a human check and was replaced; see `docs/audit_2026-10.md` |
 
 Doubtful glyphs reported by the second reader were all read the same way by both readings, and each passes both sums:
 - broken 9s in TO2, TO6, TO8, TO11, TO12;
@@ -56,7 +56,7 @@ Doubtful glyphs reported by the second reader were all read the same way by both
 
 ## Recommendation for the other 91 books
 The method works on Torino. Before scaling up:
-1. **Complete the audit.** If it finds 0 errors in 200 cells, the residual error rate is below ~1.5% (95% confidence). Given the checks, the realistic rate is far lower.
+1. **Audit: done.** The targeted manual audit (2026-10-02) found 0 errors in 34 Torino cells, and 0 in 132 cells across the five provinces.
 2. **Pilot a bad scan next.** Potenza (fasc. 76) has faded digits and a cut margin. Expect more `?` cells and flags there, and check that block and column detection holds.
 3. **Scale up.**
    - Download the 92 fascicoli from ISTAT eBiblio.
