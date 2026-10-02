@@ -243,7 +243,7 @@ def draw_audit(prov, long):
         f"Audit della digitalizzazione — Tav. 10, provincia di {prov} ({N_AUDIT} celle estratte a caso)",
         "",
         "1. Aprire il PDF della provincia alla 'pagina PDF' indicata (numero di pagina del file, non quello stampato).",
-        "2. Trovare il blocco 'REGIONE AGRARIA n' (colonna 'id': TO1 = regione agraria 1) e la riga della 'classe'.",
+        f"2. Trovare il blocco 'REGIONE AGRARIA n' (colonna 'id': {sample[0][0][:2]}1 = regione agraria 1) e la riga della 'classe'.",
         "3. Guardare solo le colonne TOTALE (Aziende o Superficie, come indicato).",
         "4. Confrontare con 'valore trascritto': scrivere si se identico, no se diverso.",
         "5. Se no, scrivere nella colonna successiva il valore come stampato (es. 1.451,79 oppure —).",
