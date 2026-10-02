@@ -7,6 +7,9 @@ per class). Then, for every cell where pass 1 and pass 2 differ:
     (unless already resolved there);
   - anything else -> listed for a zoomed re-read (scripts/zoom_senza.py).
 
+When the PDF lacks some RAs (books.csv "missing_ra", Aosta) the Tav. 1 sum cannot close, so no cell is decided
+here: every disagreement is listed for a zoomed re-read.
+
 Usage:  python3 scripts/check_pass.py Asti [--write]
 """
 import csv
@@ -24,6 +27,10 @@ NOTE = "OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum"
 
 def main(prov, write):
     work = ROOT / "work" / prov.lower()
+    book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
+    complete = not book.get("missing_ra")
+    if not complete:
+        print(f"PDF incomplete (RA {book['missing_ra']} missing): Tav. 1 sum not checked, nothing decided here")
     p1, p2 = v.read_pass(work / "pass1"), v.read_pass(work / "pass2")
     res_path = work / "resolutions.csv"
     res = list(csv.DictReader(open(res_path))) if res_path.exists() else []
@@ -43,7 +50,7 @@ def main(prov, write):
             if not abs(s - t) <= v.TOL:
                 bad_block.add((b, var))
                 print(f"block {b} {var}: sum {s:,.2f} vs TOTALE {t:,.2f}")
-    if "TAV1" in p2:
+    if "TAV1" in p2 and complete:
         for cc in range(1, 36):
             for var in v.VARS:
                 s, t = sum(val[(b, cc, var)] for b in ras), val[("TAV1", cc, var)]
@@ -67,7 +74,7 @@ def main(prov, write):
             r2 = v.norm_raw(r2)
             if r1 == r2 or (b, str(cc), var) in done:
                 continue
-            row_ok = "TAV1" in p2 and (cc, var) not in bad_row
+            row_ok = "TAV1" in p2 and complete and (cc, var) not in bad_row
             if "?" not in r2 and (b, var) not in bad_block and row_ok:
                 note = NOTE if r1 == "?" else (f"pass 1 '{r1}' vs pass 2 '{r2}': pass-2 value satisfies block sum "
                                                "and Tav. 1 sum, the pass-1 value would break both")

@@ -1,5 +1,9 @@
 # Progetto Catasto — Digitalizzazione Censimento Agricoltura 1961 (Tav. 10 & Tav. 1)
 
+> ⚠️ **Valle d'Aosta — PDF INCOMPLETO.** In `pdf_province/valled'aosta.pdf` mancano le pagine stampate 32–33
+> (Tav. 10, regioni agrarie 1–4). Sono digitalizzate solo le RA 5–7 e la Tav. 1. Dettagli in
+> [`docs/aosta_pdf_incompleto.md`](docs/aosta_pdf_incompleto.md).
+
 Progetto per la digitalizzazione, la validazione e la strutturazione dei dati relativi al 1° Censimento Generale dell'Agricoltura ISTAT del 15 aprile 1961 (Volume II, fascicoli provinciali).
 
 ---
@@ -93,3 +97,13 @@ I seguenti script sorgente Python si trovano nella cartella `scripts/` e sono pr
 - **`python3 scripts/check_pass.py Alessandria --write`**: controlla le somme del Pass 2 e decide le celle in disaccordo il cui valore chiude sia la somma del blocco sia quella della Tav. 1 (motivo scritto in `resolutions.csv`); elenca le celle da rileggere sullo zoom.
 - `scripts/pagesource.py`: se il PDF non è nel repo (Torino) usa le pagine già renderizzate in `work/<prov>/pages/` con OCR Tesseract (`apt-get install tesseract-ocr`).
 - Procedura completa e risultati dell'audit di ottobre 2026: `docs/audit_2026-10.md`.
+
+## Libri incompleti o senza livello di testo (es. Aosta)
+
+- `config/books.csv`, colonna `missing_ra` (es. `1;2;3;4`): RA le cui pagine mancano dal PDF. I blocchi
+  trovati vengono numerati saltando quelle RA. `check_pass.py` non decide nessuna cella, perché la somma con la
+  Tav. 1 non può chiudere, quindi tutto si rilegge sullo zoom. `02_validate.py` sostituisce Σ RA = Tav. 1 con il
+  controllo sul residuo (Tav. 1 − RA presenti) e lo scrive in `output/tav10_<prov>_residuo_ra_mancanti.csv`.
+  `03_build_python.py` aggiunge all'xlsx un foglio `AVVISO`. La colonna `note` contiene il testo dell'avviso.
+- `config/books.csv`, colonna `ocr` = `tesseract`: OCR con Tesseract sulle pagine a 400 DPI invece del livello di
+  testo del PDF. Lo stesso succede in automatico per le pagine che non hanno un livello di testo.
