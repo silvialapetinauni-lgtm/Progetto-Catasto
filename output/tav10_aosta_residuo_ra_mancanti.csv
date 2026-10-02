@@ -1,0 +1,36 @@
+regioni_agrarie,class_code,class_label,az,sup
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),1,Senza terreno agrario,2,0.0
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),2,"fino a 0,10",147,9.66
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),3,"0,11 - 0,20",181,28.26
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),4,"0,21 - 0,30",152,38.24
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),5,"0,31 - 0,40",133,47.44
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),6,"0,41 - 0,50",122,56.0
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),7,"0,51 - 0,75",317,200.51
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),8,"0,76 - 1,00",347,306.66
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),9,"1,01 - 1,50",715,899.18
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),10,"1,51 - 2,00",606,1067.99
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),11,"2,01 - 2,50",578,1314.66
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),12,"2,51 - 3,00",476,1306.99
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),13,"3,01 - 3,50",410,1333.74
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),14,"3,51 - 4,00",369,1387.93
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),15,"4,01 - 4,50",308,1310.77
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),16,"4,51 - 5,00",288,1368.86
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),17,"5,01 - 7,50",890,5414.13
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),18,"7,51 - 10,00",400,3441.02
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),19,"10,01 - 12,50",213,2376.89
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),20,"12,51 - 15,00",132,1801.71
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),21,"15,01 - 20,00",126,2186.17
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),22,"20,01 - 25,00",64,1447.64
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),23,"25,01 - 30,00",46,1250.84
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),24,"30,01 - 40,00",53,1852.7
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),25,"40,01 - 50,00",33,1484.65
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),26,"50,01 - 75,00",32,1895.6
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),27,"75,01 - 100,00",21,1897.33
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),28,"100,01 - 150,00",46,5661.93
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),29,"150,01 - 200,00",31,5368.61
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),30,"200,01 - 250,00",24,5443.35
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),31,"250,01 - 500,00",66,23259.29
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),32,"500,01 - 1.000,00",24,16369.59
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),33,"1.000,01 - 2.500,00",6,9951.8
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),34,oltre 2.500,5,19164.65
+RA 1+2+3+4 (derived: Tav. 1 minus RAs present),35,TOTALE,7363,120944.79

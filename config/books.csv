@@ -1,6 +1,7 @@
-provincia,sigla,cod_prov,fascicolo,pdf,tav10_first_page,tav10_last_page,tav1_page,n_ra,errata_page
-Torino,TO,001,1,torino.pdf,43,51,14,17,2
-Vercelli,VC,002,2,vercelli.pdf,31,35,10,10,2
-Cuneo,CN,004,4,pdf_province/cuneo.pdf,44,52,13,17,2
-Asti,AT,005,5,pdf_province/asti.pdf,41,43,12,5,2
-Alessandria,AL,006,6,pdf_province/alessandria.pdf,43,48,12,12,
+provincia,sigla,cod_prov,fascicolo,pdf,tav10_first_page,tav10_last_page,tav1_page,n_ra,errata_page,ocr,missing_ra,note
+Torino,TO,001,1,torino.pdf,43,51,14,17,2,,,
+Vercelli,VC,002,2,vercelli.pdf,31,35,10,10,2,,,
+Cuneo,CN,004,4,pdf_province/cuneo.pdf,44,52,13,17,2,,,
+Asti,AT,005,5,pdf_province/asti.pdf,41,43,12,5,2,,,
+Alessandria,AL,006,6,pdf_province/alessandria.pdf,43,48,12,12,,,,
+Aosta,AO,007,7,pdf_province/valled'aosta.pdf,33,34,12,7,,tesseract,1;2;3;4,"PDF INCOMPLETO: mancano le pagine stampate 32-33 (Tav. 10, regioni agrarie 1-4)"

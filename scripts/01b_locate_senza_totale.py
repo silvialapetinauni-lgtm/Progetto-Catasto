@@ -36,6 +36,7 @@ TOTALE_RE = re.compile(r"OTAL|TOTA[LI]", re.I)                         # TOTALE.
 TITLE_GAP = 18          # pt above the "Senza" row: REGIONE AGRARIA title
 BLOCK_SPAN = (250, 360)  # pt from "Senza" to "TOTALE"
 SPAN_FALLBACK = 300      # typical "Senza" -> "TOTALE" distance (Alessandria: 299-300 pt)
+TAV1_SPAN = (250, 460)   # Tav. 1 alone on a page can be set with wider rows (Aosta p. 12: 418 pt)
 
 
 def anchors(words):
@@ -51,13 +52,15 @@ def anchors(words):
     return starts, sorted(totals, key=lambda w: w[1])
 
 
-def locate(img, words, page_w, page_h):
+def locate(img, words, page_w, page_h, tav1=False):
     """Return (head band, label x-range, (az x-range, sup x-range), blocks[(top, bottom, senza_y, totale_y)])."""
     sx, sy = img.width / page_w, img.height / page_h
     starts, totals = anchors(words)
     blocks = []
     for s in starts:
         t = next((t for t in totals if BLOCK_SPAN[0] < t[1] - s < BLOCK_SPAN[1]), None)
+        if t is None and tav1:
+            t = next((t for t in totals if TAV1_SPAN[0] < t[1] - s < TAV1_SPAN[1]), None)
         if t is None:                               # "TOTALE" lost by the OCR (Cuneo pp. 46, 50, 52)
             if s + SPAN_FALLBACK + 10 > page_h or any(abs(s + SPAN_FALLBACK - u[1]) < 40 for u in totals):
                 continue
@@ -116,7 +119,7 @@ def locate(img, words, page_w, page_h):
 
 def make_crops(img, page_w, page_h, words, names, crops_dir):
     sx, sy = img.width / page_w, img.height / page_h
-    (ht, hb), (lx0, lx1), ((ax0, ax1), (_, tx1)), blocks = locate(img, words, page_w, page_h)
+    (ht, hb), (lx0, lx1), ((ax0, ax1), (_, tx1)), blocks = locate(img, words, page_w, page_h, names == ["TAV1"])
     if names == ["TAV1"]:
         blocks = blocks[:1]                         # Tav. 2 follows on the same page
     if len(blocks) != len(names):
@@ -145,17 +148,21 @@ def main(provincia):
     pages_dir.mkdir(parents=True, exist_ok=True)
     crops_dir.mkdir(parents=True, exist_ok=True)
 
+    # RAs whose pages are missing from the PDF (books.csv "missing_ra", e.g. Aosta 1;2;3;4) are skipped in the
+    # numbering, so that block RAnn is always regione agraria nn
+    missing = {int(x) for x in (book.get("missing_ra") or "").split(";") if x}
+    present = [k for k in range(1, int(book["n_ra"]) + 1) if k not in missing]
     index, names = [], []
     for page in range(int(book["tav10_first_page"]), int(book["tav10_last_page"]) + 1):
         pw, ph, words = ps.words(book, work, page)
         img = ps.image(book, work, page)
         n = len(locate(img, words, pw, ph)[3])
-        page_names = [f"RA{len(names) + i + 1:02d}" for i in range(n)]
+        page_names = [f"RA{k:02d}" for k in present[len(names):len(names) + n]]
         print(f"page {page}: {n} block(s)")
         index += [dict(r, pdf_page=page) for r in make_crops(img, pw, ph, words, page_names, crops_dir)]
         names += page_names
-    if len(names) != int(book["n_ra"]):
-        raise RuntimeError(f"found {len(names)} RA blocks, books.csv says {book['n_ra']}")
+    if len(names) != len(present):
+        raise RuntimeError(f"found {len(names)} RA blocks, books.csv says {len(present)}")
 
     page = int(book["tav1_page"])
     pw, ph, words = ps.words(book, work, page)

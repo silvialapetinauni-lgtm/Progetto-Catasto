@@ -130,7 +130,29 @@ def validate(prov):
     # (b)+(c) across regioni agrarie: sum of RAs = Tav. 1, class by class (incl. TOTALE)
     row_fail = set()
     ra = df[df.block.str.startswith("RA")]
-    if "TAV1" in p1:
+    missing = book.get("missing_ra") or ""
+    residual = None
+    if "TAV1" in p1 and missing:
+        # PDF without some RAs (Aosta: RA 1-4): Tav. 1 minus the RAs present is the missing RAs taken together,
+        # so it must be >= 0, zero in aziende iff zero in superficie, and its mean must lie within the class
+        tav1 = df[df.block == "TAV1"].set_index("class_code")
+        residual = pd.DataFrame({"class_code": classes.index, "class_label": classes["label"].values})
+        for var in VARS:
+            residual[var] = [tav1.loc[cc, var] - ra.loc[ra.class_code == cc, var].sum() for cc in classes.index]
+        residual["sup"] = residual["sup"].round(2)
+        for r in residual.itertuples():
+            for var in VARS:
+                if pd.isna(getattr(r, var)) or getattr(r, var) < -TOL:
+                    row_fail.add((r.class_code, var))
+                    flag("Tav. 1 − RA < 0", "TAV1", r.class_code, var, f"Tav. 1 minus RAs present = {getattr(r, var):,.2f}")
+            if r.class_code in (1, 35) or (r.az == 0 and r.sup == 0):
+                continue
+            lo, hi = classes.loc[r.class_code, "lower_ha"], classes.loc[r.class_code, "upper_ha"]
+            mean = r.sup / r.az if r.az else math.inf
+            if mean < lo - TOL or (not pd.isna(hi) and mean > hi + TOL):
+                flag("Tav. 1 − RA: mean outside class", "TAV1", r.class_code, "az/sup",
+                     f"{r.sup:,.2f} ha / {r.az} = {mean:.3f} ha, class {lo}–{hi}")
+    elif "TAV1" in p1:
         tav1 = df[df.block == "TAV1"].set_index("class_code")
         for cc in classes.index:
             for var in VARS:
@@ -180,10 +202,19 @@ def validate(prov):
 
     fl = pd.DataFrame(flags, columns=["check", "block", "class_code", "var", "pdf_page", "class_label", "detail"])
     fl.to_csv(outdir / f"flags_{prov.lower()}.csv", index=False)
+    if residual is not None:
+        residual.insert(0, "regioni_agrarie", "RA " + missing.replace(";", "+") + " (derived: Tav. 1 minus RAs present)")
+        residual.to_csv(outdir / f"tav10_{prov.lower()}_residuo_ra_mancanti.csv", index=False)
 
     n_cells = len(df) * 2
     status = pd.concat([df[f"{v}_status"] for v in VARS]).value_counts()
-    lines = [f"# Validation — {prov}", "",
+    warn = []
+    if missing:
+        warn = [f"> **ATTENZIONE — {book.get('note', '')}.**", f"> Regioni agrarie mancanti: "
+                f"{missing.replace(';', ', ')}. Il controllo Σ RA = Tav. 1 non è possibile: è sostituito dal controllo "
+                f"sul residuo Tav. 1 − RA presenti (≥ 0, media nella classe), scritto in "
+                f"`output/tav10_{prov.lower()}_residuo_ra_mancanti.csv`.", ""]
+    lines = [f"# Validation — {prov}", "", *warn,
              f"- blocks: {len(blocks)} ({sum(b.startswith('RA') for b in blocks)} regioni agrarie + Tav. 1)",
              f"- cells: {n_cells}",
              f"- pass 2 complete: {pass2_complete}",

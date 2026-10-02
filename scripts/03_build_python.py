@@ -53,7 +53,17 @@ def build(prov):
     xlsx_path = ROOT / "output" / f"tav10_{p}.xlsx"
 
     merged.to_stata(dta_path, write_index=False, version=118)
-    merged.to_excel(xlsx_path, index=False, sheet_name=f"tav10_{p}")
+    import csv
+    book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
+    with pd.ExcelWriter(xlsx_path) as xw:
+        merged.to_excel(xw, index=False, sheet_name=f"tav10_{p}")
+        if book.get("missing_ra"):                  # incomplete PDF (Aosta): say so inside the file itself
+            pd.DataFrame({"AVVISO": [book["note"],
+                                     f"Regioni agrarie presenti: {', '.join(str(r) for r in merged.reg_agr)}; "
+                                     f"mancanti: {book['missing_ra'].replace(';', ', ')}.",
+                                     f"Totale delle RA mancanti (derivato da Tav. 1): "
+                                     f"output/tav10_{p}_residuo_ra_mancanti.csv"]}
+                         ).to_excel(xw, index=False, sheet_name="AVVISO")
 
     print(f"Successfully generated:\n  - {dta_path}\n  - {xlsx_path}")
     print(f"Shape: {merged.shape} ({merged.shape[0]} rows, {merged.shape[1]} columns)")

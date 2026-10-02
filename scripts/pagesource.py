@@ -22,10 +22,16 @@ def _pdf(book):
 
 
 def words(book, work, page):
-    """(page_w, page_h, [(x0, y0, x1, y1, text)]) in points."""
+    """(page_w, page_h, [(x0, y0, x1, y1, text)]) in points. The PDF's own text layer is used unless books.csv
+    says ocr=tesseract (Aosta: the text layer misses most of the Totale column and p. 34 has none) or the page
+    has no text layer: then the 400 DPI rendering is OCR-ed with Tesseract."""
     pdf = _pdf(book)
     if pdf:
-        return rc.words_on_page(pdf, page)
+        if book.get("ocr") != "tesseract":
+            pw, ph, ws = rc.words_on_page(pdf, page)
+            if ws:
+                return pw, ph, ws
+        rc.render(pdf, page, work / "pages")
     png = work / "pages" / f"p{page:03d}.png"
     tsv = work / "ocr" / f"p{page:03d}.tsv"
     if not tsv.exists():
