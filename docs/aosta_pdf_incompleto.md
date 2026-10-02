@@ -31,6 +31,11 @@ Mancano anche le ultime pagine di Tav. 11, che però non rientra nel progetto.
 - **Validazione:** `02_validate.py Aosta` dà **0 flag**. In tutti e quattro i blocchi la somma delle 34 classi è
   uguale al TOTALE stampato.
 
+## Audit manuale
+`output/audit_aosta.xlsx` (20 celle) è stato controllato a mano sul PDF il 2026-10-02: tutte le celle sono
+corrette, con **0 errori**. Delle 20 celle, 15 erano state rilette sullo zoom o ricostruite dalla somma di riga e 5
+sono il controllo casuale. L'esito è in `output/audit_result_aosta.md`.
+
 ## Cosa NON si può controllare
 - Il controllo Σ RA = Tav. 1 non è possibile. Al suo posto `02_validate.py` controlla il **residuo**
   Tav. 1 − (RA 5 + 6 + 7), cioè le RA 1–4 prese insieme. Per ogni classe il residuo deve essere ≥ 0, uguale a zero
@@ -48,7 +53,8 @@ Mancano anche le ultime pagine di Tav. 11, che però non rientra nel progetto.
   non ci sono righe vuote né valori imputati.
 
 ## Per completare
-Serve una copia del fascicolo con le pagine stampate 32–33. Quando c'è:
+Al 2026-10-02 le pagine stampate 32–33 non sono reperibili, quindi per ora la Valle d'Aosta resta limitata alle RA 5–7.
+Se in futuro si trova una copia del fascicolo con quelle pagine: Quando c'è:
 1. sostituire il PDF;
 2. svuotare `missing_ra` in `books.csv` e aggiornare `tav10_first_page`;
 3. rieseguire la procedura dalle pagine nuove.
