@@ -16,7 +16,7 @@ spec.loader.exec_module(rc)
 
 
 def main(prov, block, class_code):
-    work = ROOT / "work" / prov.lower()
+    work = ROOT / "work" / prov.lower().replace(" ", "")
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
     info = next(r for r in csv.DictReader(open(work / "blocks.csv")) if r["block"] == block)
     page, top, bottom = int(info["pdf_page"]), float(info["top_pt"]), float(info["bottom_pt"])

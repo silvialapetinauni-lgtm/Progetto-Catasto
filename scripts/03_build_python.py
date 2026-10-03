@@ -11,7 +11,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 
 def build(prov):
-    p = prov.lower()
+    p = prov.lower().replace(" ", "")
     long_path = ROOT / "output" / f"tav10_{p}_long.csv"
     classes_path = ROOT / "config" / "classes.csv"
 

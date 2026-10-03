@@ -239,7 +239,7 @@ def write_templates(names, work):
 def main(provincia):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == provincia)
     pdf = (ROOT / book["pdf"]).resolve() if (ROOT / book["pdf"]).exists() else (PROJECT / book["pdf"]).resolve()
-    work = ROOT / "work" / provincia.lower()
+    work = ROOT / "work" / provincia.lower().replace(" ", "")
     pages_dir, crops_dir = work / "pages", work / "crops"
     pages_dir.mkdir(parents=True, exist_ok=True)
     crops_dir.mkdir(parents=True, exist_ok=True)

@@ -12,7 +12,7 @@ prov, block, ra_num, zona = sys.argv[1:5]
 vals = [l.split() for l in sys.stdin.read().strip().splitlines() if l.strip()]
 assert len(vals) == 35 and all(len(v) == 2 for v in vals), f"{len(vals)} lines / bad line"
 classes = list(csv.DictReader(open(ROOT / "config" / "classes.csv")))
-with open(ROOT / "work" / prov.lower() / "pass2" / f"{block}.csv", "w", newline="") as fh:
+with open(ROOT / "work" / prov.lower().replace(" ", "") / "pass2" / f"{block}.csv", "w", newline="") as fh:
     w = csv.writer(fh)
     w.writerow(["class_code", "label", "az_totale", "sup_totale"])
     w.writerow(["ra_num", "numero regione agraria", ra_num, ra_num])

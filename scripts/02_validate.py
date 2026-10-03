@@ -67,7 +67,7 @@ def read_pass(folder):
 
 # ---------------------------------------------------------------- main validation
 def validate(prov):
-    work, outdir = ROOT / "work" / prov.lower(), ROOT / "output"
+    work, outdir = ROOT / "work" / prov.lower().replace(" ", ""), ROOT / "output"
     outdir.mkdir(exist_ok=True)
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
     classes = pd.read_csv(ROOT / "config" / "classes.csv").set_index("class_code")
@@ -197,14 +197,14 @@ def validate(prov):
     long.insert(7, "class_label", long.class_code.map(classes["label"]))
     long.insert(8, "suffix", long.class_code.map(classes["suffix"]))
     long["pdf_page"] = long.block.map(pages)
-    long.to_csv(outdir / f"tav10_{prov.lower()}_long.csv", index=False)
-    df[df.block == "TAV1"].to_csv(outdir / f"tav1_{prov.lower()}_long.csv", index=False)
+    long.to_csv(outdir / f"tav10_{prov.lower().replace(' ', '')}_long.csv", index=False)
+    df[df.block == "TAV1"].to_csv(outdir / f"tav1_{prov.lower().replace(' ', '')}_long.csv", index=False)
 
     fl = pd.DataFrame(flags, columns=["check", "block", "class_code", "var", "pdf_page", "class_label", "detail"])
-    fl.to_csv(outdir / f"flags_{prov.lower()}.csv", index=False)
+    fl.to_csv(outdir / f"flags_{prov.lower().replace(' ', '')}.csv", index=False)
     if residual is not None:
         residual.insert(0, "regioni_agrarie", "RA " + missing.replace(";", "+") + " (derived: Tav. 1 minus RAs present)")
-        residual.to_csv(outdir / f"tav10_{prov.lower()}_residuo_ra_mancanti.csv", index=False)
+        residual.to_csv(outdir / f"tav10_{prov.lower().replace(' ', '')}_residuo_ra_mancanti.csv", index=False)
 
     n_cells = len(df) * 2
     status = pd.concat([df[f"{v}_status"] for v in VARS]).value_counts()
@@ -213,7 +213,7 @@ def validate(prov):
         warn = [f"> **ATTENZIONE — {book.get('note', '')}.**", f"> Regioni agrarie mancanti: "
                 f"{missing.replace(';', ', ')}. Il controllo Σ RA = Tav. 1 non è possibile: è sostituito dal controllo "
                 f"sul residuo Tav. 1 − RA presenti (≥ 0, media nella classe), scritto in "
-                f"`output/tav10_{prov.lower()}_residuo_ra_mancanti.csv`.", ""]
+                f"`output/tav10_{prov.lower().replace(' ', '')}_residuo_ra_mancanti.csv`.", ""]
     lines = [f"# Validation — {prov}", "", *warn,
              f"- blocks: {len(blocks)} ({sum(b.startswith('RA') for b in blocks)} regioni agrarie + Tav. 1)",
              f"- cells: {n_cells}",
@@ -221,7 +221,7 @@ def validate(prov):
              "- cell status: " + ", ".join(f"{k} {v}" for k, v in status.items()), "",
              "| check | flags |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in fl.check.value_counts().items()] or ["| (none) | 0 |"]
-    (outdir / f"validation_{prov.lower()}.md").write_text("\n".join(lines) + "\n")
+    (outdir / f"validation_{prov.lower().replace(' ', '')}.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     if len(fl):
         print("\nflags:")
@@ -235,7 +235,7 @@ def draw_audit(prov, long):
     from openpyxl.styles import Alignment, Font, PatternFill
     from openpyxl.worksheet.datavalidation import DataValidation
 
-    path = ROOT / "output" / f"audit_{prov.lower()}.xlsx"
+    path = ROOT / "output" / f"audit_{prov.lower().replace(' ', '')}.xlsx"
     if path.exists():
         print(f"\n{path.name} already exists: not overwritten")
         return
@@ -306,7 +306,7 @@ def score_audit(prov):
     """Score a filled audit sheet. A targeted sheet (scripts/audit_targeted.py, column K "motivo") is
     reported by stratum: it over-samples the cells the OCR got wrong, so no whole-table error bound is given."""
     from openpyxl import load_workbook
-    path = ROOT / "output" / f"audit_{prov.lower()}.xlsx"
+    path = ROOT / "output" / f"audit_{prov.lower().replace(' ', '')}.xlsx"
     ws = load_workbook(path).active
     rows = [r for r in ws.iter_rows(min_row=2, values_only=True) if r[0] is not None]
     done = [r for r in rows if str(r[7] or "").strip().lower() in ("si", "sì", "no")]
@@ -330,7 +330,7 @@ def score_audit(prov):
     if errors:
         lines += ["", "| id | classe | colonna | trascritto | corretto | note |", "|---|---|---|---|---|---|"]
         lines += [f"| {r[1]} | {r[4]} | {r[5]} | {r[6]} | {r[8]} | {r[9] or ''} |" for r in errors]
-    (ROOT / "output" / f"audit_result_{prov.lower()}.md").write_text("\n".join(lines) + "\n")
+    (ROOT / "output" / f"audit_result_{prov.lower().replace(' ', '')}.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 
 

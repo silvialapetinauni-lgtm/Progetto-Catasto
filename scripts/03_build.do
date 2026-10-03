@@ -18,7 +18,7 @@ set more off
 
 args prov
 if "`prov'" == "" local prov "Torino"
-local p = lower("`prov'")
+local p = subinstr(lower("`prov'"), " ", "", .)
 
 * project folder: run from inside digit/ (cd ".../Progetto silvia/digit"), or set global DIGIT beforehand
 if "$DIGIT" == "" global DIGIT "`c(pwd)'"

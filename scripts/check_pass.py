@@ -26,7 +26,7 @@ NOTE = "OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum"
 
 
 def main(prov, write):
-    work = ROOT / "work" / prov.lower()
+    work = ROOT / "work" / prov.lower().replace(" ", "")
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
     complete = not book.get("missing_ra")
     if not complete:
