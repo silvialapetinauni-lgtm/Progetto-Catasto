@@ -98,6 +98,11 @@ def locate(img, words, page_w, page_h, tav1=False):
     steps = [b - a for a, b in zip(heads_x, heads_x[1:]) if 85 < b - a < 115]
     if steps:
         pitch = float(np.median(steps))
+        # conduzione diretta "Aziende" header lost too (Genova p. 41): a whole pair still fits left of the
+        # first header found, so the label column ends one pitch earlier
+        left = min(w[0] for w in words if blocks[0][2] - 2 < w[1] < blocks[0][3])
+        while label_x1 - pitch > left + 60:
+            label_x1 -= pitch
         exp_sup = label_x1 + 3 + 4 * pitch + 46        # conduzione diretta starts at the label column edge
         if sup_head[0] < exp_sup - 30:
             sup_head = (exp_sup, sup_head[1], exp_sup + 29, sup_head[3], "Superficie?")
@@ -113,6 +118,10 @@ def locate(img, words, page_w, page_h, tav1=False):
     az_x0 = near(az_head[0] - 22, 8)
     mid = near((az_head[2] + sup_head[0]) / 2, 8)
     sup_x1 = min(page_w - 1, max(near(sup_head[2] + 8, 8), sup_head[2] + 13))   # digits overhang the header
+    if sup_head[4] == "Superficie?":               # inferred header (Genova p. 41): take the right-most digits
+        right = [w[2] for w in words if blocks[0][2] - 2 < w[1] < blocks[0][3] + 4 and w[0] > sup_head[0] - 20]
+        if right:
+            sup_x1 = min(page_w - 1, max(sup_x1, max(right) + 4))
     label = (max(0.0, label_x1 - 105), label_x1 + 2)
     return head_band, label, ((az_x0, mid), (mid, sup_x1)), blocks
 
