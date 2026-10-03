@@ -32,7 +32,7 @@ ps = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ps)
 
 SENZA_RE = re.compile(r"^\W*.?.?[ae]nz[aQ0-9.]*\W*$|^sen", re.I)      # Senza, lenza, t-jenza, SenzQ.
-TOTALE_RE = re.compile(r"OTAL|TOTA[LI]", re.I)                         # TOTALE., 'fOTALE, TOTALlè, 1'OTALE,
+TOTALE_RE = re.compile(r"OTAL|TOTA[LI]|^TO\W?TAJ", re.I)               # TOTALE., 'fOTALE, TOTALlè, 1'OTALE, TO'tAJ,E
 TITLE_GAP = 18          # pt above the "Senza" row: REGIONE AGRARIA title
 BLOCK_SPAN = (250, 360)  # pt from "Senza" to "TOTALE"
 SPAN_FALLBACK = 300      # typical "Senza" -> "TOTALE" distance (Alessandria: 299-300 pt)
@@ -42,7 +42,7 @@ TAV1_SPAN = (250, 460)   # Tav. 1 alone on a page can be set with wider rows (Ao
 def anchors(words):
     left = [w for w in words if w[0] < 230]           # labels sit at x 0-190 pt depending on the scan
     senza = [w for w in left if SENZA_RE.search(w[4])]
-    agrario = [w for w in left if re.fullmatch(r"\W*agrario\W*", w[4], re.I)]
+    agrario = [w for w in left if re.fullmatch(r"\W*agra\W?r[iìl]o\W*", w[4], re.I)]   # agra:rìo (La Spezia p. 12)
     rows = sorted({round(w[1], 1) for w in senza + agrario})
     starts = []
     for y in rows:                                   # one start per text line
@@ -84,6 +84,10 @@ def locate(img, words, page_w, page_h, tav1=False):
     first = blocks[0][2]
     heads = [w for w in words if w[1] < first and re.search(r"^\W*Aziend", w[4]) and w[1] > first - 80]
     supers = [w for w in words if w[1] < first and re.search(r"^\W*Super", w[4]) and w[1] > first - 80]
+    if len(supers) < 2:                             # badly OCR-ed headers (La Spezia p. 12): Supcrfkie, A,ziendn,
+        heads = [w for w in words if w[1] < first and re.search(r"^\W*A\W?z[il]", w[4]) and w[1] > first - 80]
+        supers = [w for w in words if w[1] < first and re.search(r"^\W*[S8!]?[-\\]*[uU]p[ceat]", w[4])
+                  and w[1] > first - 80]           # 8-uperlìeìt, !-\upel'fidc, SUpt'rnein
     if not heads or not supers:
         raise RuntimeError("Aziende/Superficie column headers not found")
     az_head = max(heads, key=lambda w: w[0])
@@ -152,7 +156,7 @@ def make_crops(img, page_w, page_h, words, names, crops_dir):
 
 def main(provincia):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == provincia)
-    work = ROOT / "work" / provincia.lower()
+    work = ROOT / "work" / provincia.lower().replace(" ", "")
     pages_dir, crops_dir = work / "pages", work / "crops"
     pages_dir.mkdir(parents=True, exist_ok=True)
     crops_dir.mkdir(parents=True, exist_ok=True)

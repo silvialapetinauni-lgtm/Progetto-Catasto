@@ -1,0 +1,178 @@
+block,class_code,var,value_raw,note
+RA03,,ra_num,3,"title: pass 1 OCR '?', pass 2 '3'; RA number matches block order"
+RA03,,zona,C,"title: pass 1 OCR '?', pass 2 'C'; RA number matches block order"
+RA01,2,az,44,"pass 1 '—' vs pass 2 '44': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,2,sup,"3,16","pass 1 '—' vs pass 2 '3,16': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,3,az,50,"pass 1 '44' vs pass 2 '50': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,3,sup,"8,06","pass 1 '3,16' vs pass 2 '8,06': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,4,az,32,"pass 1 '50' vs pass 2 '32': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,4,sup,"8,21",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,5,az,37,"pass 1 '32' vs pass 2 '37': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,5,sup,"13,65","pass 1 '8,21' vs pass 2 '13,65': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,6,az,44,"pass 1 '37' vs pass 2 '44': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,6,sup,"20,68",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,7,az,70,"pass 1 '44' vs pass 2 '70': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,7,sup,"44,59",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,8,az,88,"pass 1 '70' vs pass 2 '88': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,8,sup,"80,26","pass 1 '44,59' vs pass 2 '80,26': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,9,az,193,"pass 1 '88' vs pass 2 '193': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,9,sup,"250,29",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,10,az,152,"pass 1 '193' vs pass 2 '152': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,10,sup,"273,52",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,11,az,163,"pass 1 '152' vs pass 2 '163': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,11,sup,"372,97",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,12,az,170,"pass 1 '163' vs pass 2 '170': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,12,sup,"476,28",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,13,az,138,"pass 1 '170' vs pass 2 '138': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,13,sup,"451,09",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,14,az,151,"pass 1 '138' vs pass 2 '151': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,14,sup,"571,94",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,15,az,146,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,15,sup,"622,49",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,16,az,105,"pass 1 '146' vs pass 2 '105': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,16,sup,"500,06",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,17,az,453,"pass 1 '105' vs pass 2 '453': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,17,sup,"2.817,67",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,18,az,322,"pass 1 '453' vs pass 2 '322': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,18,sup,"2.794,45",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,19,az,251,"pass 1 '322' vs pass 2 '251': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,19,sup,"2.821,19",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,20,az,156,"pass 1 '251' vs pass 2 '156': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,20,sup,"2.137,82","pass 1 '2.821,19' vs pass 2 '2.137,82': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,21,az,203,"pass 1 '156' vs pass 2 '203': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,21,sup,"3.482,09",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,22,az,119,"pass 1 '203' vs pass 2 '119': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,22,sup,"2.656,11","pass 1 '30.482,09' vs pass 2 '2.656,11': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,23,az,58,"pass 1 '119' vs pass 2 '58': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,23,sup,"1.590,08","pass 1 '2.656,11' vs pass 2 '1.590,08': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,24,az,68,"pass 1 '58' vs pass 2 '68': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,24,sup,"2.363,49",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,25,az,30,"pass 1 '68' vs pass 2 '30': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,25,sup,"1.361,82","pass 1 '2.363,49' vs pass 2 '1.361,82': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,26,az,25,"pass 1 '30' vs pass 2 '25': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,26,sup,"1.495,26",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,27,az,10,"pass 1 '25' vs pass 2 '10': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,27,sup,"852,20",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,28,az,3,"pass 1 '10' vs pass 2 '3': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,28,sup,"388,62","pass 1 '852,20' vs pass 2 '388,62': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,29,az,4,"pass 1 '3' vs pass 2 '4': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,29,sup,"707,18",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,30,az,1,"pass 1 '4' vs pass 2 '1': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,30,sup,"220,20",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,31,az,5,"pass 1 '1' vs pass 2 '5': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,31,sup,"1.769,91",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,32,az,—,"pass 1 '5' vs pass 2 '—': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,32,sup,—,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,33,az,1,"pass 1 '—' vs pass 2 '1': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,33,sup,"1.453,21","pass 1 '—' vs pass 2 '1.453,21': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA01,34,az,—,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,34,sup,—,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,35,az,3.292,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA01,35,sup,"32.608,55",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,1,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,1,sup,—,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,2,sup,"15,21",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,3,sup,"49,59",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,7,sup,"273,66",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,8,sup,"351,10",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,13,az,235,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,13,sup,"766,31",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,14,sup,"627,33",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,16,sup,"729,34",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,17,sup,"2.903,08",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,18,sup,"2.005,23",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,19,sup,"1.495,97",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,20,sup,"1.267,75",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,21,sup,"1.577,78",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,22,sup,"789,21",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,23,sup,"531,60",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,27,az,3,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,27,sup,"285,75",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,28,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,28,sup,"116,11",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,30,sup,"222,25",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,31,sup,"553,60",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,35,az,5.589,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA02,35,sup,"19.841,62",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,1,az,2,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,2,az,249,"pass 1 '11.249' vs pass 2 '249': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA03,3,az,271,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,5,az,180,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,10,sup,"514,65","pass 1 '314,65' vs pass 2 '514,65': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA03,18,az,100,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,27,sup,"88,29",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,28,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,29,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,31,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,32,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA03,35,sup,"10.769,07",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA04,1,az,1,"pass 1 '—' vs pass 2 '1': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+RA04,27,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA04,28,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA04,29,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA04,30,az,1,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+RA04,35,sup,"15.279,42","pass 1 '15.219,42' vs pass 2 '15.279,42': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,2,az,2.601,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,3,az,2.881,"pass 1 '6.412.881.990' vs pass 2 '2.881': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,4,az,1.990,"pass 1 '1.617' vs pass 2 '1.990': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,4,sup,"508,39","pass 1 '576,93' vs pass 2 '508,39': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,5,az,1.617,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,5,sup,"576,93","pass 1 '589,95' vs pass 2 '576,93': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,6,az,1.287,"pass 1 '2.359' vs pass 2 '1.287': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,6,sup,"589,95",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,7,az,2.359,"pass 1 '19.111' vs pass 2 '2.359': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,7,sup,"1.468,56","pass 1 '1.687,15' vs pass 2 '1.468,56': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,8,az,1.911,"pass 1 '2.374' vs pass 2 '1.911': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,8,sup,"1.687,15",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,9,az,2.374,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,9,sup,"2.966,26","pass 1 '2.687,47' vs pass 2 '2.966,26': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,10,az,1.621,"pass 1 '1.006' vs pass 2 '1.621': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,10,sup,"2.855,48","pass 1 '2.783,45' vs pass 2 '2.855,48': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,11,az,1.191,"pass 1 '727' vs pass 2 '1.191': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,11,sup,"2.687,47","pass 1 '2.372,18' vs pass 2 '2.687,47': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,12,az,1.006,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,12,sup,"2.783,45","pass 1 '2.328,69' vs pass 2 '2.783,45': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,13,az,727,"pass 1 '508' vs pass 2 '727': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,13,sup,"2.372,18","pass 1 '2.165,23' vs pass 2 '2.372,18': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,14,az,618,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,14,sup,"2.328,69",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,15,az,508,"pass 1 '736' vs pass 2 '508': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,15,sup,"2.165,23","pass 1 '6.359,14' vs pass 2 '2.165,23': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,16,az,436,"pass 1 '457' vs pass 2 '436': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,16,sup,"2.074,77","pass 1 '5.112,87' vs pass 2 '2.074,77': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,17,az,1.391,"pass 1 '111' vs pass 2 '1.391': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,17,sup,"8.512,59",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,18,az,736,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,18,sup,"6.359,14","pass 1 '5.991,13' vs pass 2 '6.359,14': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,19,az,457,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,19,sup,"5.112,87",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,20,az,311,"pass 1 '104' vs pass 2 '311': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,20,sup,"4.240,66","pass 1 '3.624,51' vs pass 2 '4.240,66': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,21,az,348,"pass 1 '47' vs pass 2 '348': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,21,sup,"5.991,13","pass 1 '2.110,49' vs pass 2 '5.991,13': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,22,az,174,"pass 1 '38' vs pass 2 '174': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,22,sup,"3.874,45",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,23,az,84,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,23,sup,"2.283,03","pass 1 '1.321,05' vs pass 2 '2.283,03': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,24,az,104,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,24,sup,"3.624,51",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,25,az,47,"pass 1 '3' vs pass 2 '47': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,25,sup,"2.110,49","pass 1 '650,50' vs pass 2 '2.110,49': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,26,az,38,"pass 1 '8' vs pass 2 '38': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,26,sup,"2.246,79","pass 1 '2.630,40' vs pass 2 '2.246,79': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,27,az,15,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,27,sup,"1.321,05","pass 1 '572,74' vs pass 2 '1.321,05': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,28,az,6,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,28,sup,"744,36","pass 1 '1.453,21' vs pass 2 '744,36': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,29,az,6,"pass 1 '—' vs pass 2 '6': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,29,sup,"1.081,99","pass 1 '—' vs pass 2 '1.081,99': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,30,az,3,"pass 1 '26.861' vs pass 2 '3': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,30,sup,"650,50","pass 1 '78.498,66' vs pass 2 '650,50': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,31,az,8,"pass 1 '—' vs pass 2 '8': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,31,sup,"2.630,40","pass 1 '—' vs pass 2 '2.630,40': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,32,az,1,"pass 1 '—' vs pass 2 '1': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,32,sup,"572,74","pass 1 '—' vs pass 2 '572,74': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,33,az,1,"pass 1 '—' vs pass 2 '1': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,33,sup,"1.453,21","pass 1 '—' vs pass 2 '1.453,21': pass-2 value satisfies block sum and Tav. 1 sum, the pass-1 value would break both"
+TAV1,35,az,26.861,OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum
+TAV1,35,sup,"78.498,66",OCR unreadable; pass-2 value confirmed by block sum and Tav. 1 sum

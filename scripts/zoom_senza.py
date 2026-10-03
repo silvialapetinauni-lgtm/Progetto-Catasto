@@ -22,7 +22,7 @@ _spec.loader.exec_module(ps)
 
 
 def main(prov, block, codes):
-    work = ROOT / "work" / prov.lower()
+    work = ROOT / "work" / prov.lower().replace(" ", "")
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
     b = next(r for r in csv.DictReader(open(work / "blocks.csv")) if r["block"] == block)
     pw, ph, _ = ps.words(book, work, int(b["pdf_page"]))

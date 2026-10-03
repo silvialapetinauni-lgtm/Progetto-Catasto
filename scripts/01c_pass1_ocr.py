@@ -130,7 +130,7 @@ def title(words, b):
 
 def main(prov):
     book = next(b for b in csv.DictReader(open(ROOT / "config" / "books.csv")) if b["provincia"] == prov)
-    work = ROOT / "work" / prov.lower()
+    work = ROOT / "work" / prov.lower().replace(" ", "")
     classes = list(csv.DictReader(open(ROOT / "config" / "classes.csv")))
     cache = {}
     for b in csv.DictReader(open(work / "blocks.csv")):

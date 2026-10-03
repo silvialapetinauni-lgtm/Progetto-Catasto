@@ -33,8 +33,8 @@ MOTIVO = {"A": "riletta su zoom / ricostruita da somma di riga",
 
 
 def strata(prov):
-    work = ROOT / "work" / prov.lower()
-    long = pd.read_csv(ROOT / "output" / f"tav10_{prov.lower()}_long.csv", dtype=str)
+    work = ROOT / "work" / prov.lower().replace(" ", "")
+    long = pd.read_csv(ROOT / "output" / f"tav10_{prov.lower().replace(' ', '')}_long.csv", dtype=str)
     notes = {}
     if (work / "resolutions.csv").exists():
         for r in csv.DictReader(open(work / "resolutions.csv")):
@@ -76,7 +76,7 @@ def draw(prov):
 
 
 def write(prov, pick, sizes):
-    path = ROOT / "output" / f"audit_{prov.lower()}.xlsx"
+    path = ROOT / "output" / f"audit_{prov.lower().replace(' ', '')}.xlsx"
     wb = Workbook()
     ws = wb.active
     ws.title = "audit"
@@ -123,7 +123,7 @@ def write(prov, pick, sizes):
 
 if __name__ == "__main__":
     prov = sys.argv[1]
-    path = ROOT / "output" / f"audit_{prov.lower()}.xlsx"
+    path = ROOT / "output" / f"audit_{prov.lower().replace(' ', '')}.xlsx"
     if path.exists() and "--force" not in sys.argv:
         sys.exit(f"{path.name} exists: use --force to replace it")
     write(prov, *draw(prov))
